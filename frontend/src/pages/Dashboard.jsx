@@ -18,29 +18,53 @@ export default function Dashboard(){
   }, [])
 
   return (
-    <div style={{maxWidth: 720, margin:'40px auto', padding:16}}>
-      <h2>Dashboard de Puntos</h2>
-      <p><b>Total de escaneos:</b> {stats.total_scans} · <b>Usuarios:</b> {stats.total_users}</p>
-      <table style={{width:'100%', borderCollapse:'collapse'}}>
-        <thead>
-          <tr>
-            <th style={{textAlign:'left', borderBottom:'1px solid #eee', padding:8}}>#</th>
-            <th style={{textAlign:'left', borderBottom:'1px solid #eee', padding:8}}>Nombre</th>
-            <th style={{textAlign:'left', borderBottom:'1px solid #eee', padding:8}}>Apellido</th>
-            <th style={{textAlign:'left', borderBottom:'1px solid #eee', padding:8}}>Puntos</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map((u, i)=> (
-            <tr key={`${u.first}-${u.last}`}>
-              <td style={{borderBottom:'1px solid #f5f5f5', padding:8}}>{i+1}</td>
-              <td style={{borderBottom:'1px solid #f5f5f5', padding:8}}>{u.first}</td>
-              <td style={{borderBottom:'1px solid #f5f5f5', padding:8}}>{u.last}</td>
-              <td style={{borderBottom:'1px solid #f5f5f5', padding:8}}><b>{u.points}</b></td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <section className="container section">
+      <h1 className="display-sm">Impact Dashboard</h1>
+      <p className="muted">Datos en tiempo real de retornos y participación.</p>
+
+      {/* Stat cards */}
+      <div className="stats">
+        <div className="stat">
+          <div className="stat-kicker">Total de escaneos</div>
+          <div className="stat-value">{stats.total_scans.toLocaleString()}</div>
+          <div className="stat-help">Registros confirmados</div>
+        </div>
+        <div className="stat">
+          <div className="stat-kicker">Usuarios</div>
+          <div className="stat-value">{stats.total_users.toLocaleString()}</div>
+          <div className="stat-help">Participantes únicos</div>
+        </div>
+      </div>
+
+      {/* Table */}
+      <div className="table-card">
+        <div className="table-head">
+          <h3>Ranking de puntos</h3>
+          <button className="btn btn-outline btn-sm" onClick={refresh}>Actualizar</button>
+        </div>
+        <div className="table-wrap">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Puntos</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((u, i)=> (
+                <tr key={`${u.first}-${u.last}`}>
+                  <td>{i+1}</td>
+                  <td>{u.first}</td>
+                  <td>{u.last}</td>
+                  <td><b>{u.points}</b></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
   )
 }

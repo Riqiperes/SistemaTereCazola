@@ -3,13 +3,16 @@ import { QRCodeCanvas } from 'qrcode.react'
 export default function QRPage(){
   const url = window.location.origin + '/scan'
   return (
-    <div style={{display:'grid', placeItems:'center', height:'100dvh'}}>
-      <div style={{textAlign:'center'}}>
-        <h2>QR para escanear en tienda</h2>
-        <QRCodeCanvas value={url} size={256} includeMargin />
-        <p style={{marginTop:12}}>{url}</p>
-        <p style={{opacity:.7}}>Imprime esta pantalla o guarda la imagen del QR.</p>
+    <section className="fullscreen-center">
+      <div className="qr-card">
+        <p className="eyebrow center">In-store QR</p>
+        <h2 className="display-sm center">Escanea para registrar</h2>
+        <div className="qr-wrap">
+          <QRCodeCanvas value={url} size={256} includeMargin />
+        </div>
+        <p className="muted center">{url}</p>
+        <p className="muted center">Imprime esta pantalla o guarda la imagen del QR.</p>
       </div>
-    </div>
+    </section>
   )
 }

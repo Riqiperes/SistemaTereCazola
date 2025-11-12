@@ -1,15 +1,14 @@
-export default function Card({ title, children, footer }) {
+export default function Card({ title, eyebrow, children, footer }) {
   return (
-    <div style={{
-      border: '1px solid #eee',
-      borderRadius: 12,
-      padding: 16,
-      boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
-      background: '#fff'
-    }}>
-      {title && <h3 style={{marginTop:0}}>{title}</h3>}
-      <div>{children}</div>
-      {footer && <div style={{borderTop:'1px solid #f0f0f0', marginTop:12, paddingTop:12}}>{footer}</div>}
-    </div>
+    <section className="card">
+      {(eyebrow || title) && (
+        <header className="card-head">
+          {eyebrow && <span className="eyebrow">{eyebrow}</span>}
+          {title && <h3 className="card-title">{title}</h3>}
+        </header>
+      )}
+      <div className="card-body">{children}</div>
+      {footer && <footer className="card-foot">{footer}</footer>}
+    </section>
   )
 }

@@ -1,34 +1,80 @@
 import { Link } from 'react-router-dom'
 import Card from '../components/Card'
 
-export default function Home(){
+export default function Home() {
   return (
-    <div style={{maxWidth: 720, margin: '40px auto', padding: 16}}>
-      <h1>Bienvenid@ a Tere Cazola – Recicla y Gana</h1>
-      <p>Escanea el código en tienda, registra tu nombre y acumula puntos por cada devolución.</p>
+    <>
+      {/* Hero */}
+      <section className="hero">
+        <div className="container hero-inner">
+          <p className="eyebrow">Circular economy initiative</p>
+          <h1 className="display">Give packages a second life</h1>
+          <p className="lede">
+            Devuelve tus envases Tere Cazola en tienda y ayuda a construir un sistema más sostenible.
+            Cada empaque cuenta.
+          </p>
+          <div className="cta-row">
+            <Link to="/scan" className="btn btn-primary">Registrar devolución</Link>
+            <Link to="/dashboard" className="btn btn-ghost">Ver impacto</Link>
+            <Link to="/qr" className="btn btn-outline">Ver QR</Link>
+          </div>
 
-      <div style={{display:'grid', gap:16, gridTemplateColumns:'1fr 1fr'}}>
-        <Card title="Registrar usuario">
-          <p>Captura tu nombre tras escanear el QR en tienda.</p>
-          <Link to="/scan" className="btn">Ir a registro</Link>
-        </Card>
-        <Card title="Ver dashboard">
-          <p>Consulta el ranking de puntos en tiempo real.</p>
-          <Link to="/dashboard" className="btn">Abrir dashboard</Link>
-        </Card>
-      </div>
+          <div className="hero-search">
+            <input placeholder="Encuentra tu tienda (Centro, Altabrisa…)" />
+            <button className="btn btn-dark">Buscar</button>
+          </div>
+        </div>
+      </section>
 
-      <div style={{marginTop:16}}>
-        <Card title="Ver Código QR">
-          <p>Colócalo impreso en la tienda. Siempre dirige a la misma URL de registro.</p>
-          <Link to="/qr" className="btn">Mostrar QR</Link>
-        </Card>
-      </div>
+      {/* How it works */}
+      <section className="section container">
+        <h2 className="section-title">How it works</h2>
+        <p className="muted center">Tres pasos sencillos para hacer la diferencia</p>
 
-      <style>{`
-        .btn { display:inline-block; padding:10px 14px; border-radius:8px; border:1px solid #111; text-decoration:none; }
-        a.btn:hover { background:#111; color:#fff; }
-      `}</style>
-    </div>
+        <div className="cards-3">
+          <Card title="Scan the QR code" eyebrow="📷">
+            <p>Ubica el QR en la tienda y escanéalo para iniciar el registro.</p>
+          </Card>
+          <Card title="Return your packaging" eyebrow="🔁">
+            <p>Entrega tus envases limpios; el personal valida y suma puntos.</p>
+          </Card>
+          <Card title="See the impact" eyebrow="📊">
+            <p>Consulta el tablero en tiempo real: retornos, peso y CO₂ evitado.</p>
+          </Card>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="section section-tint">
+        <div className="container">
+          <h2 className="section-title">Benefits for Tere Cazola</h2>
+          <p className="muted center">Crecimiento sustentable mediante empaque circular</p>
+
+          <div className="cards-3">
+            <Card title="Environmental" eyebrow="🌿">
+              <ul className="tick">
+                <li>Menos residuos</li>
+                <li>Menor CO₂e</li>
+                <li>Modelo de economía circular</li>
+              </ul>
+            </Card>
+            <Card title="Social" eyebrow="🤝">
+              <ul className="tick">
+                <li>Clientes embajadores</li>
+                <li>Programas de comunidad</li>
+                <li>Reputación de marca</li>
+              </ul>
+            </Card>
+            <Card title="Economic" eyebrow="📦">
+              <ul className="tick">
+                <li>Ahorros en empaque</li>
+                <li>Operación eficiente</li>
+                <li>Mejor visibilidad de datos</li>
+              </ul>
+            </Card>
+          </div>
+        </div>
+      </section>
+    </>
   )
 }

@@ -1,35 +1,57 @@
-import { Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, NavLink } from 'react-router-dom'
 import Home from './pages/Home'
 import Scan from './pages/Scan'
 import Dashboard from './pages/Dashboard'
 import QRPage from './pages/QRPage'
+import './styles.css'
 
-export default function App(){
+export default function App() {
   return (
-    <div>
-      <nav style={{
-        display:'flex', gap:12, alignItems:'center', padding:'12px 16px',
-        position:'sticky', top:0, background:'#fff', borderBottom:'1px solid #eee', zIndex:10
-      }}>
-        <b>Tere Cazola · Recicla</b>
-        <Link to="/">Inicio</Link>
-        <Link to="/scan">Registrar usuario</Link>
-        <Link to="/dashboard">Dashboard</Link>
-        <Link to="/qr">Ver QR</Link>
-      </nav>
+    <div className="app">
+      <header className="site-header">
+        <div className="container nav">
+          <div className="brand">
+            <span className="brand-kicker">Eco-Return</span>
+            <span className="brand-title">Tere Cazola</span>
+          </div>
 
-      <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/scan" element={<Scan/>} />
-        <Route path="/dashboard" element={<Dashboard/>} />
-        <Route path="/qr" element={<QRPage/>} />
-      </Routes>
+          <nav className="menu">
+            <NavLink to="/" end className="menu-link">Inicio</NavLink>
+            <NavLink to="/scan" className="menu-link">Registrar usuario</NavLink>
+            <NavLink to="/dashboard" className="menu-link">Dashboard</NavLink>
+            <NavLink to="/qr" className="menu-link">Ver QR</NavLink>
+          </nav>
+        </div>
+      </header>
 
-      <style>{`
-        body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif; }
-        a { color: #111; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-      `}</style>
+      <main>
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/scan" element={<Scan/>} />
+          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/qr" element={<QRPage/>} />
+        </Routes>
+      </main>
+
+      <footer className="site-footer">
+        <div className="container footer-grid">
+          <div>
+            <div className="brand small">
+              <span className="brand-kicker">Eco-Return</span>
+              <span className="brand-title">Tere Cazola</span>
+            </div>
+            <p className="muted">Programa de retorno de envases. Datos abiertos, impacto real.</p>
+          </div>
+          <div className="footer-links">
+            <a className="muted" href="#">Cómo funciona</a>
+            <a className="muted" href="#">Impacto</a>
+            <a className="muted" href="#">Beneficios</a>
+          </div>
+          <div className="footer-note muted">
+            © {new Date().getFullYear()} Proyecto académico · Universidad Modelo
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
